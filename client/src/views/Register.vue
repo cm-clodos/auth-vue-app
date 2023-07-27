@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     submit() {
-      const router = useRouter();
       axios.post('http://localhost:3000/api/register', this.data,
       {
         headers: {
