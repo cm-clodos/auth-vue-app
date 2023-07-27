@@ -1,5 +1,7 @@
 # client
 
+Beispiel für eine Authentifizierung mit JWT und Vue.js mit http only Cookies.
+
 ## Project setup
 ```
 npm install
