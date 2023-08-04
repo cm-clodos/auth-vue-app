@@ -14,11 +14,13 @@
       <label for="floatingPassword">Password</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    <div>
+      <p class="errorText">{{this.errorMessage}}</p>
+    </div>
   </form>
 </template>
 <script>
 import axios from "axios";
-import {useRouter} from "vue-router";
 
 export default {
   name: 'Register',
@@ -28,7 +30,8 @@ export default {
         name: '',
         email: '',
         password: ''
-      }
+      },
+      errorMessage: ''
     }
   },
   methods: {
@@ -42,6 +45,9 @@ export default {
         console.log(response);
         this.$router.push({name: 'Login'});
       }).catch((error) => {
+        if ([400].includes(error.response.status)) {
+          this.errorMessage = error.response.data.message;
+        }
         console.log(error);
       });
     }
@@ -51,5 +57,8 @@ export default {
 
 </script>
 <style scoped>
-
+.errorText {
+    color: red;
+    margin: 10px 0px 0px 0px;
+}
 </style>
